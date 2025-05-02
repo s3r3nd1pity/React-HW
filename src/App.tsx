@@ -3,7 +3,9 @@ import MyComponent from "./components/MyComponent.tsx";
 
 function App() {
   return (
-    <><MyComponent text={"HIIIIII"}/></>
+    <>
+      <MyComponent text={'hiiii'}>lorem</MyComponent>
+    </>
   )
 }
 
