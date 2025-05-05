@@ -8,18 +8,18 @@ export interface IUser {
 	website: string;
 	company: UserCompany;
 }
-export interface UserAddressGeo {
+ interface UserAddressGeo {
 	lat: string;
 	lng: string;
 }
-export interface UserAddress {
+ interface UserAddress {
 	street: string;
 	suite: string;
 	city: string;
 	zipcode: string;
 	geo: UserAddressGeo;
 }
-export interface UserCompany {
+ interface UserCompany {
 	name: string;
 	catchPhrase: string;
 	bs: string;
