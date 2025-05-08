@@ -1,9 +1,12 @@
 import './App.css'
+import CommentsComponent from "./components/CommentsComponent.tsx";
 
 function App() {
-  return (
-    <></>
-  )
+    return (
+        <>
+          <CommentsComponent/>
+        </>
+    )
 }
 
 export default App
