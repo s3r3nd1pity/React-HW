@@ -1,9 +1,12 @@
 import './App.css'
+import ProductsComponent from "./components/ProductsComponent.tsx";
 
 function App() {
-  return (
-    <></>
-  )
+    return (
+        <>
+            <ProductsComponent/>
+        </>
+    )
 }
 
 export default App
