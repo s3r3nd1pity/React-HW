@@ -2,7 +2,7 @@
 const PostsPage = () => {
     return (
         <div>
-            post
+            pos
         </div>
     );
 };
