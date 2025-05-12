@@ -7,6 +7,7 @@ export const urlsPH = {
     posts: {
         allPosts: jsonPHBaseUrl + "/posts",
         byId: (id: number) => jsonPHBaseUrl + "/posts/" + id,
+        userPostsById: (id: number) => jsonPHBaseUrl + '/posts?userId=' + id,
     },
     todos: {
         allTodos: jsonPHBaseUrl + "/todos",
