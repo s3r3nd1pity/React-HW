@@ -27,5 +27,10 @@ export const urlsDummy = {
     todos: {
         allTodos: dummyJsonBaseUrl + "/todos",
         byId: (id: number) => dummyJsonBaseUrl + "/todos/" + id,
+    },
+    carts: {
+        allCarts: dummyJsonBaseUrl + "/carts",
+        byId: (id: number) => dummyJsonBaseUrl + "/todos/" + id,
+        byUserId: (id: number) => dummyJsonBaseUrl + "/carts/user/" + id
     }
 }
