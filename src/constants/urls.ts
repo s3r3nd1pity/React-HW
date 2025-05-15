@@ -11,6 +11,10 @@ export const urlsPH = {
     todos: {
         allTodos: jsonPHBaseUrl + "/todos",
         byId: (id: number) => jsonPHBaseUrl + "/todos/" + id,
+    },
+    comments:{
+        allComments: jsonPHBaseUrl + "/comments",
+        byId: (id: number) => jsonPHBaseUrl + "/comments/" + id,
     }
 }
 
@@ -27,5 +31,9 @@ export const urlsDummy = {
     todos: {
         allTodos: dummyJsonBaseUrl + "/todos",
         byId: (id: number) => dummyJsonBaseUrl + "/todos/" + id,
+    },
+    comments:{
+        allComments: dummyJsonBaseUrl + "/comments",
+        byId: (id: number) => dummyJsonBaseUrl + "/comments/" + id,
     }
 }
