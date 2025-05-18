@@ -1,10 +1,10 @@
-import Menu from "../components/menu/Menu.tsx";
 import {Outlet} from "react-router-dom";
+import PaginationComponent from "../components/pagination/PaginationComponent.tsx";
 
 const MainLayout = () => {
     return (
         <div>
-            <Menu/>
+            <PaginationComponent />
             <hr/>
             <Outlet/>
         </div>
