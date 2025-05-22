@@ -1,8 +1,9 @@
+import App from "../../App.tsx";
 
 const Menu = () => {
     return (
         <div>
-
+            <App/>
         </div>
     );
 };
