@@ -1,4 +1,8 @@
+import {useForm} from "react-hook-form";
+import {IForm} from "../../models/IForm.ts";
+
 const FormComponent = () => {
+    //дибильный вариант контроля формы
     // const [formState, setFormState] = useState<IForm>({
     //     username: "hii",
     //     password: "",
@@ -32,15 +36,69 @@ const FormComponent = () => {
     //     </div>
     // );
 
-    return (
-        <div>
-            <form>
-                <input type={"text"} name={"username"}/>
-                <input type={"text"} name={"password"}/>
-                <input type={"number"} name={"age"}/>
-                <button>send</button>
-            </form>
-        </div>
+    //дибильный вариант валидации
+    // const {handleSubmit, register, formState: {errors, isValid}} = useForm<IForm>({mode: "all"});
+    //
+    // const handler = (formData: IForm) => {
+    //     console.log(formData);
+    // };
+    //
+    // return (
+    //     <div>
+    //         <form onSubmit={handleSubmit(handler)}>
+    //             <label>
+    //                 <input type={"text"} {...register("username", {
+    //                     required: true,
+    //                     pattern: {
+    //                         value: /\w+/,
+    //                         message: "Wrong name"
+    //                     },
+    //                 })} />
+    //                 <div>{errors.username?.message}</div>
+    //             </label>
+    //             <label>
+    //                 <input type={"text"} {...register("password", {
+    //                     required: true,
+    //                     minLength: {
+    //                         value: 4,
+    //                         message: "Wrong password"
+    //                     }
+    //                 })}/>
+    //                 <div>{errors.password?.message}</div>
+    //             </label>
+    //             <label>
+    //                 <input type={"number"} {...register("age", {
+    //                     required: true,
+    //                     valueAsNumber: true,
+    //                     min: {
+    //                         value: 18,
+    //                         message: "Wrong age"
+    //                     }
+    //                 })}/>
+    //                 <div>{errors.age?.message}</div>
+    //             </label>
+    //
+    //
+    //             <button disabled={!isValid}>send</button>
+    //         </form>
+    //     </div>
+    // );
+
+    const {handleSubmit, register} = useForm<IForm>();
+
+    const handler = (formData:IForm) => {
+        console.log(formData);
+     };
+
+     return (
+       <div>
+           <form onSubmit={handleSubmit(handler)}>
+       <input type={"text"} {...register("username")} />
+                <input type={"text"} {...register("password")}/>
+          <input type={"number"} {...register("age")}/>
+               <button>send</button>
+             </form>
+         </div>
     );
 
 };
