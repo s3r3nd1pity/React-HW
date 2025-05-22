@@ -1,5 +1,7 @@
 import {useForm} from "react-hook-form";
 import {IForm} from "../../models/IForm.ts";
+import {joiResolver} from "@hookform/resolvers/joi";
+import {userValidator} from "../../validators/user.validator.ts";
 
 const FormComponent = () => {
     //дибильный вариант контроля формы
@@ -84,21 +86,32 @@ const FormComponent = () => {
     //     </div>
     // );
 
-    const {handleSubmit, register} = useForm<IForm>();
+    const {handleSubmit, register, formState:{errors}} = useForm<IForm>({mode:"all", resolver:joiResolver(userValidator)});
 
-    const handler = (formData:IForm) => {
+    const handler = (formData: IForm) => {
         console.log(formData);
-     };
+    };
 
-     return (
-       <div>
-           <form onSubmit={handleSubmit(handler)}>
-       <input type={"text"} {...register("username")} />
-                <input type={"text"} {...register("password")}/>
-          <input type={"number"} {...register("age")}/>
-               <button>send</button>
-             </form>
-         </div>
+    return (
+        <div>
+            <form onSubmit={handleSubmit(handler)}>
+                <label>
+                    <input type={"text"} {...register("username")} />
+                    <div>{errors.username?.message}</div>
+                </label>
+
+                <label>
+                    <input type={"text"} {...register("password")}/>
+                    <div>{errors.password?.message}</div>
+                </label>
+
+                <label>
+                    <input type={"number"} {...register("age")}/>
+                    <div>{errors.age?.message}</div>
+                </label>
+                <button>send</button>
+            </form>
+        </div>
     );
 
 };
