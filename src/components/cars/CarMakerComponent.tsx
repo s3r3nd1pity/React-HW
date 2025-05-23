@@ -21,17 +21,17 @@ const CarMakerComponent = () => {
         <div>
             <form onSubmit={handleSubmit(handler)}>
                 <label>
-                    <input type={"text"} {...register("brand")} className={"border"}/>
+                    <input type={"text"} {...register("brand")} className={"border"} placeholder={"brand"}/>
                     <div>{errors.brand?.message}</div>
                 </label>
 
                 <label>
-                    <input type={"number"} {...register("price")} className={"border"}/>
+                    <input type={"number"} {...register("price")} className={"border"} placeholder={"price"}/>
                     <div>{errors.price?.message}</div>
                 </label>
 
                 <label>
-                    <input type={"number"} {...register("year")} className={"border"}/>
+                    <input type={"number"} {...register("year")} className={"border"} placeholder={"year"}/>
                     <div>{errors.year?.message}</div>
                 </label>
 
