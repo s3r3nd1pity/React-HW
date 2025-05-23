@@ -1,12 +1,10 @@
-import Menu from "../components/menu/Menu.tsx";
-import {Outlet} from "react-router-dom";
+
+import App from "../App.tsx";
 
 const MainLayout = () => {
     return (
         <div>
-            <Menu/>
-            <hr/>
-            <Outlet/>
+            <App/>
         </div>
     );
 };
