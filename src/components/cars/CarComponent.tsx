@@ -1,8 +1,16 @@
+import {ICar} from "../../models/cars/ICar.ts";
+import {FC} from "react";
 
-const CarComponent = () => {
+type CarPropsType = {
+    car:ICar;
+}
+
+
+const CarComponent:FC<CarPropsType> = ({car}) => {
     return (
-        <div>
-
+        <div className={"border"}>
+            <h2 className={"text-lg font-semibold"}>{car.id}. {car.brand}</h2>
+            <p className={"text-red-600"}>{car.price}</p>
         </div>
     );
 };
