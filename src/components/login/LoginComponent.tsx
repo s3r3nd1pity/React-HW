@@ -4,10 +4,12 @@ import {login} from "../../services/api.service.ts";
 import {useState} from "react";
 
 const LoginComponent = () => {
+    // выдавливаем эти хуйни для нормального бзания формы из юзформ
     const {handleSubmit, register, reset} = useForm<ILoginData>();
-
+    //пытаемся найти юзера в лх
     const userInStorage = localStorage.getItem("user");
     const handler = (formData: ILoginData) => {
+        // в логин передаем всю инфу из формы потом чистим форму и в случае если юзер не подходит то мы чистим лх
         login({
             username: formData.username,
             password: formData.password,
@@ -30,6 +32,7 @@ const LoginComponent = () => {
                 <label className={"w-screen"}>
                     <input type={"password"} {...register("password")} placeholder={"password"}
                            className={"w-full px-4 py-2 border border-pink-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400"}/>
+
                 </label>
                 <label className={"w-screen"}>
                     <input type={"number"} {...register("expiresInMins")} placeholder={"expires in mins for token"}
