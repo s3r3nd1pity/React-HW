@@ -1,13 +1,13 @@
 import {IUser} from "../../../models/users/IUser.ts";
-import {createAsyncThunk, createSlice, isFulfilled, PayloadAction} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 type UserSliceType = {
     users: IUser[],
-    user: IUser | null,
-    loadState: boolean
+    loadStateUser: boolean,
+    userId: number
 }
 
-const initialState: UserSliceType = {users: [], user: null, loadState: false}
+const initialState: UserSliceType = {users: [], loadStateUser: false, userId: 1}
 
 const loadUsers = createAsyncThunk(
     "userSlice/loadUsers",
@@ -15,20 +15,8 @@ const loadUsers = createAsyncThunk(
         try {
             const users = await fetch("https://jsonplaceholder.typicode.com/users")
                 .then(value => value.json())
+
             return thunkAPI.fulfillWithValue(users)
-
-        } catch (e) {
-            return thunkAPI.rejectWithValue(e);
-        }
-    });
-const loadUser = createAsyncThunk(
-    "userSlice/loadUser",
-    async (id: string, thunkAPI) => {
-        try {
-            const user = await fetch("https://jsonplaceholder.typicode.com/users/" + id)
-                .then(value => value.json())
-
-            return thunkAPI.fulfillWithValue(user)
 
         } catch (e) {
             return thunkAPI.rejectWithValue(e);
@@ -40,27 +28,28 @@ export const userSlice = createSlice({
     initialState: initialState,
     reducers: {
         changeLoadState: (state, action: PayloadAction<boolean>) => {
-            state.loadState = action.payload
+            state.loadStateUser = action.payload
+        },
+        changeId:(state, action:PayloadAction<number>)=>{
+            state.userId = action.payload
         }
     },
     extraReducers: (builder) => {
         builder
             .addCase(loadUsers.fulfilled, (state, action: PayloadAction<IUser[]>) => {
                 state.users = action.payload
+                state.loadStateUser = true;
+
             })
             .addCase(loadUsers.rejected, (state, action) => {
                 console.log(state)
                 console.log(action)
-            })
-            .addCase(loadUser.fulfilled, (state, action: PayloadAction<IUser>) => {
-                state.user = action.payload
-            })
-            .addMatcher(isFulfilled(loadUser, loadUsers),(state)=>{
-                state.loadState = true
+                state.loadStateUser = false;
+
             })
     }
 })
 
 export const userActions = {
-    ...userSlice.actions, loadUsers, loadUser
+    ...userSlice.actions, loadUsers
 }
